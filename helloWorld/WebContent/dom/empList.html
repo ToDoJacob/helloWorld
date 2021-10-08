@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>dom/empList.html</title>
+	<style>
+		* {
+			font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+		}
+
+		#add {
+			border: 1px dotted green;
+			padding: 2px;
+			width: 60%;
+			margin-bottom: 10px;
+		}
+
+		.field {
+			padding: 5px;
+		}
+
+		div.btn {
+			margin: 0 35%;
+		}
+	</style>
+</head>
+
+<body>
+	<h3>사원등록</h3>
+	<div id="add">
+		<div class="field">사원번호: <input type="text" id="empId"></div>
+		<div class="field">이&nbsp;&nbsp;&nbsp;름: <input type="text" id="name"></div>
+		<div class="field">이 메 일: <input type="text" id="email"></div>
+		<div class="field">입사일자: <input type="date" id="hire"></div>
+		<div class="field">직&nbsp;&nbsp;&nbsp;무: <input type="text" id="job" value="IT_PROG"></div>
+		<div class="btn">
+			<button id="addBtn">등록</button>
+			<button id="modBtn">변경</button>
+		</div>
+	</div>
+	<div id="show">
+	</div>
+
+	<script src="emp.js"></script>
+	<script>
+		document.getElementById('addBtn').onclick = function () {
+			// 사용자 입력값 가져와서...
+			// ajax() : 서버로 데이터 전송.
+			// 응답결과: 화면에 정보추가.
+			let eId = document.getElementById('empId').value;
+			let name = document.getElementById('name').value;
+			let email = document.getElementById('email').value;
+			let hire = document.getElementById('hire').value;
+			let job = document.getElementById('job').value;
+
+			// 등록아이디가 존재하는지 여부 체크
+			// 아이디값을 가지고 서버에 값이 존재여부 체크.
+			// ajax > 서블릿 > EmpDAO: 한건 조회해서 메소드.
+			// 존재하면 true, 존지하지 않으면 false;
+			let xhttp = new XMLHttpRequest();
+			xhttp.onload = function () {
+				let exists = JSON.parse(xhttp.responseText); // {retCode: 'OK'}
+				// exist or notExist
+				if (exists.retCode == 'NG') {
+					window.alert('이미 존재하는 아이디입니다.');
+					return;
+				}
+				// 정상적인 등록....
+				console.log('1111111');
+
+				console.log('2222222');
+				if (eId == "" || name == "" || email == "" || hire == "" || job == "") {
+					window.alert("필수입력항목 확인!");
+					return;
+				}
+
+				let param = 'id=' + eId + '&name=' + name + '&email=' + //
+					email + '&hire=' + hire + '&job=' + job;
+
+				// 등록처리하는 ajax 호출.
+				let xhtp = new XMLHttpRequest();
+				xhtp.onload = function () {
+					console.log('333333');
+					let data = JSON.parse(xhtp.responseText);
+					// {id:?, name:?, email: ?, }
+					document.querySelector('#show>table').appendChild(getRow(data));
+				}
+				xhtp.open('post', '../AddEmpServlet');
+				xhtp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhtp.send(param);
+			}
+			xhttp.open('get', '../CheckEmpServlet?checkId=' + eId);
+			xhttp.send();
+			// 
+
+
+		}
+	</script>
+</body>
+
+</html>

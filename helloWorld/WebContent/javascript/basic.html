@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript/basic.html</title>
+</head>
+<body>
+    <script>
+        var v1 = 'Hello, World';
+        v1 = 10;
+        v1 = true;
+        console.log(typeof v1);
+
+        v2 = 30;
+        console.log('v2 :' + v2);
+
+        v3 = 20;
+        function f1() {
+            // var v3 = 40;
+            v3 = 50;
+            v4 = 90;
+            console.log('v3 : ' + v3);
+        }
+        f1();
+
+        var v3 = 25;
+        console.log('v3 outer : ' + v3);
+        console.log('v4 outer : ' + v4);
+        
+        let num1 = 10;
+
+        let num2 = 20;
+        num2 : 'Hello';
+        console.log('num1: ' + num1);
+        console.log('num2: ' + num2);
+
+        const num3 = 40;
+        // num3 = 'Hello';
+        // console.log('num3: ' + nume3)
+
+        const obj = {
+            
+        }
+
+        let num4 = null;
+        console.log(typeof num4);
+
+        let num5 = [];
+        console.log(typeof num5);
+        num5[0] = 10;
+        num5[1] = 'Hello';
+        num5[2] = true;
+
+        for(let i =0; i<num5.length; i++){
+            console.log('log: ' + num5[i]);
+        }
+
+        document.write('<h1>Hello, World</h1>');
+
+        const hong = {
+            firstName: 'kildong',
+            lasName: 'Hong',
+            age : 20,
+            hobby: '독서'
+        }
+        document.write('<p>이름: ' + hong.firstName + hong.lasName + '</p>');
+        document.write('<p>나이: ' + hong.age + '</p>');
+        document.write('<p>취미: ' + hong.hobby + '</p>');
+
+        document.write('<ul>');
+        document.write('<li>' + hong.firstName + hong.lasName + '</li>');
+        document.write('<li>' + hong.age + '</li>');
+        document.write('<li>' + hong.hobby + '</li>');
+        document.write('</ul>');
+    </script>
+</body>
+</html>

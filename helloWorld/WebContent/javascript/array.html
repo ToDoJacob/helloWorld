@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="" id="inputValue" value="test">
+    <p>test</p>
+    <button id="btn" onclick="addArray()">추가하기</button>
+    <button onclick="checkAry()">삭제하기</button>
+    <ul id="list">
+    </ul>
+    <script>
+        const fruits = ['apple', 'banana', 'cherry'];
+        const newFruits = fruits.slice(0,2);
+        console.log(newFruits);
+
+
+
+        const inputAry = [];
+
+        function showList() {
+             //화면에 추가.
+             let ulTag = document.getElementById('list');
+            let tag = '';
+            for(let i=0; i<inputAry.length; i++) {
+                tag += '<li>' + inputAry[i] + '</li>';
+            }
+            ulTag.innerHTML = tag; // <ul><li>test</li><li>hello</li></ul>
+        }
+        //입력한값 삭제
+        function checkAry() {
+           /*  let input = document.getElementById('inputValue').value; */
+           /* let input = document.getElementsByTagName('input')[0].value; */
+           let input = document.querySelector('input[type="text"]').value;
+           console.log(input);
+                for(let i=0; i<inputAry.length; i++) {
+                if(inputAry[i] == input){
+                    inputAry.splice(i,1)
+                     break;
+               
+                }
+            }
+            showList();
+        }
+        function addArray() {
+            let input = document.getElementById('inputValue');
+            let iValue = input.value;
+            //배열 추가.
+            if(!iValue){
+                alert('값을 입력하세요.')
+                return;
+            }
+            inputAry.unshift(iValue);
+            showList();
+            input.value = '';
+            input.focus();
+            console.log(inputAry);
+        }
+
+        function removeAry() {
+            
+            if(inputAry != null){
+                inputAry.pop();
+            } else {
+                alert('삭제할 목록이 없습니다.')
+            }
+            showList();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const numbers = [30, 25, 4, 100, 10];
+        numbers.sort(function (a,b){
+            return b - a; //값이 작은숫자부터 정렬 
+        });
+
+        console.log(numbers);
+
+        const members = [{
+            name: 'Hong',
+            age: 20
+        },{
+            name: 'Park',
+            age: 22
+        },{
+            name: 'Choi',
+            age: 25
+        }];
+        members.sort(function (a,b){
+            return a.age - b.age;
+            /* if(a.name < b.name){
+                return -1;
+            } else {
+                return 1;
+            } */
+        });
+        console.log(members);
+
+        const nums = [30, 25, 4, 100, 10];
+        let temp = -Infinity;
+        for (let j = 0;j < nums.length -1; j++)
+            for(let i=0; i<nums.length-1; i++) {
+                if(nums[i] < nums[i +1]) {
+                    temp = nums[i]
+                    nums[i] = nums[i + 1];
+                    nums[i + 1] = temp;
+                }
+            }  
+
+        console.log(`nums : ${nums}`);
+    </script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .row {
+            border: 1px dotted green;
+            padding: 3px;
+        }
+        .row>div{
+            display: inline-block;
+            width: 50px;
+        }
+        .row > .email, .ip {
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- <div class="container">
+        <h3>사원리스트</h3>
+        <div class="row">
+            <div class="id">1</div>
+            <div class="firstName">John</div>
+            <div class="lastName">Doe</div>
+            <div class="email">John@Doe.com</div>
+            <div class="gender">Female</div>
+            <div class="ip">21.226.88.97</div>
+        </div>
+        <div class="row">
+            <div class="id">2</div>
+            <div class="firstName">John</div>
+            <div class="lastName">Doe</div>
+            <div class="email">John@Doe.com</div>
+            <div class="gender">Female</div>
+            <div class="ip">21.226.88.97</div>
+        </div>
+    </div> -->
+    <script>
+    let rawData = `[{"id":1,"first_name":"Goldie","last_name":"Belfelt","email":"gbelfelt0@yellowbook.com","gender":"Female","ip_address":"137.111.82.178"},
+    {"id":2,"first_name":"Gordy","last_name":"Kimbrough","email":"gkimbrough1@addtoany.com","gender":"Female","ip_address":"112.225.214.85"},
+    {"id":3,"first_name":"Babb","last_name":"Kohen","email":"bkohen2@yellowbook.com","gender":"Female","ip_address":"108.163.241.58"},
+    {"id":4,"first_name":"Darn","last_name":"Guinnane","email":"dguinnane3@booking.com","gender":"Non-binary","ip_address":"184.107.148.155"},
+    {"id":5,"first_name":"Andriana","last_name":"Skehens","email":"askehens4@cdbaby.com","gender":"Male","ip_address":"223.219.56.21"},
+    {"id":6,"first_name":"Page","last_name":"Sutlieff","email":"psutlieff5@economist.com","gender":"Genderfluid","ip_address":"85.255.213.249"},
+    {"id":7,"first_name":"Lars","last_name":"Askaw","email":"laskaw6@macromedia.com","gender":"Non-binary","ip_address":"103.201.64.137"},
+    {"id":8,"first_name":"Devan","last_name":"Riteley","email":"driteley7@digg.com","gender":"Polygender","ip_address":"28.61.63.188"},
+    {"id":9,"first_name":"Hussein","last_name":"Lasseter","email":"hlasseter8@cnbc.com","gender":"Male","ip_address":"17.157.91.80"},
+    {"id":10,"first_name":"Marcello","last_name":"Mayoral","email":"mmayoral9@163.com","gender":"Genderqueer","ip_address":"219.245.84.33"},
+    {"id":11,"first_name":"Celka","last_name":"McNae","email":"cmcnaea@ovh.net","gender":"Genderfluid","ip_address":"143.17.219.44"},
+    {"id":12,"first_name":"Hermie","last_name":"Waddilove","email":"hwaddiloveb@51.la","gender":"Genderqueer","ip_address":"36.188.196.73"},
+    {"id":13,"first_name":"Fleurette","last_name":"Roseblade","email":"frosebladec@posterous.com","gender":"Bigender","ip_address":"46.102.45.193"},
+    {"id":14,"first_name":"Beniamino","last_name":"Ruggieri","email":"bruggierid@devhub.com","gender":"Genderqueer","ip_address":"213.0.22.158"},
+    {"id":15,"first_name":"Chere","last_name":"Battie","email":"cbattiee@phoca.cz","gender":"Bigender","ip_address":"85.23.189.35"}]
+    `;
+
+//rawData 텍스트형식 데이터를 자바스크립트 object형식으로 바꾸겠습니다.
+let data = JSON.parse(rawData);
+
+/* let ids = document.querySelectorAll('.row > div.firstName');
+console.log(ids[0].innerHTML);
+let firstNames = document.getElementsByClassName('firstName');
+console.log(firstNames[1].innerHTML); */
+
+
+
+
+/* console.log(ids[0].innerHTML = 'Smith'); */
+
+// 자바스크립트의 object타입을  json의 String 타입데이터로 바꾸겠습니다.
+
+/* let json = JSON.stringify(data);
+console.log(json); */
+
+
+
+
+
+
+
+document.write('<table border="1">');
+document.write('<tr><th colspan="6">사원리스트</th></tr>')
+
+
+/* for (i = 0; i <= data.length; i++){
+    document.write('<tr>')
+    // for(j=0; j < data[field].lenth; j++){ 
+    for(let field in data){
+        document.write('<td>' + data[field] + '</td>');
+    }
+    document.write('</tr>')
+} */
+
+data.forEach(function (obj, idx, ary) {
+        document.write('<tr>');
+        for (let field in obj) {
+            document.write('<td>' + obj[field] + '</td>');
+        }
+        document.write('</tr>');
+    })
+   
+document.write('</table>');
+
+</script>
+</body>
+</html>

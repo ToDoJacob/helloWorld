@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    const members = [
+        {name:'최선영', 
+        score: 80
+    },{
+        name: '윤희성',
+        score: 85
+    },{
+        name: '김지인',
+        score: 89
+    },{
+        name: '홍길동',
+        score: 50
+    }];
+    //mapping, filter, forEach
+    //pass: pass, fail <= mapping
+    //pass인 값만 filter
+    //name, score, pass여부를 forEach를 이용해서
+    // 이름, 점수, 합격
+    //윤희성, 85, pass 식으로 나타내기
+
+    //교수님 소스
+    document.write('<table border="1"');
+        document.write('<tr><th>이름</th><th>점수</th><th>합격</th></tr>')
+    members.map(function (obj, idx, ary) {
+        const pass = obj.score >= 60 ? 'pass' : 'fail';
+        return {
+            name: obj.name,
+            score: obj.score,
+            pass: pass
+        }
+    }).filter(function (obj, idx, ary) {
+        return obj.pass == 'pass';
+    }).forEach(function (obj, idx, ary) {
+        document.write('<tr>');
+        for (let field in obj) {
+            document.write('<td>' + obj[field] + '</td>');
+        }
+        document.write('</tr>');
+    })
+    document.write('</table>');
+
+
+    //내 소스
+ /*    document.write('<table border="1"');
+    document.write('<tr><th>이름</th><th>점수</th><th>합격</th></tr>')
+    const students = members.map(function (obj, idx, ary) {
+        const pass = obj.score >= 60 ? 'pass' : 'fail';
+        return {
+            name: obj.name,
+            score: obj.score,
+            pass: pass
+        };
+    });
+    const passstudents = students.filter(function (obj, idx, ary) {
+        return obj.pass == 'pass';
+    });
+    passstudents.forEach(function(obj, idx, ary){
+        document.write('<tr>');
+            for(let field in obj) {
+                document.write('<td>' + obj[field] + '</td>');
+            }
+            document.write('</tr>');
+    })
+    document.write('</table>');
+ */
+
+
+    document.write('<table border="1"><tr><th>이름</th><th>점수</th><th>합격</th><tr>');
+        members.map(function(obj, idx, ary){
+            const pass = obj.score >= 60 ? 'pass' : 'fail';
+            return {
+                name: obj.name,
+                score: obj.score,
+                pass: pass
+            }
+        }).filter(function(obj,idx,ary){
+            return obj.pass == 'pass';
+        }).forEach(function(obj,idx,ary){
+            document.write('<tr>')
+                for(let field in obj){
+                    document.write('<td>' + obj[field] + '</td>');
+                }
+                document.write('</tr>')
+        });
+        document.write('</table>')
+    </script>
+    
+</body>
+</html>

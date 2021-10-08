@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Ajax XML 파일실습.</h1>
+    <div id="show"></div>
+
+    <script>
+        let xhtp = new XMLHttpRequest(); //1. xhtp생성
+        xhtp.onreadystatechange = function () { //2. 페이지처리상태 변할때 실행되는 function 정의
+            if (this.readyState == 4 && this.status == 200) {
+                let doc = this.responseXML;
+                let data = doc.getElementsByTagName('record');
+                // console.log(data[0].childNodes[3].firstChild.nodeValue);
+                createPage(data); // <record></record>
+            }
+        }
+        xhtp.open('get', 'dataset.xml'); //3. xml파일 열고
+        xhtp.send(); //4. 보냄
+
+        function createPage(data) {
+            let titles = ['아이디', '이름', '성씨', '이메일', '성별', 'IP'];
+
+            // id, fn, ln, em, gen, ip
+            let table, tr, td, txt;
+            table = document.createElement('table');
+            table.setAttribute('border', '1');
+            // 타이틀(헤더)
+            tr = document.createElement('tr');
+            for (let title of titles) {
+                th = document.createElement('th');
+                txt = document.createTextNode(title);
+                th.appendChild(txt);
+                tr.appendChild(th);
+            }
+            table.appendChild(tr);
+
+            for (let obj of data) {
+            // for (let i = 0; i < data.length; i++) {
+                tr = document.createElement('tr');
+                
+                for (let field in obj[0]) {
+                // for (let j = 0; j < 6; j++) {
+                    td = document.createElement('td');
+                    let id = data[obj].childNodes[field].firstChild.nodeValue;
+                    txt = document.createTextNode(id);
+                    td.appendChild(txt);
+                    tr.appendChild(td);
+                }
+                table.appendChild(tr);
+            }
+
+            document.getElementById('show').appendChild(table);
+        }
+    </script>
+</body>
+
+</html>

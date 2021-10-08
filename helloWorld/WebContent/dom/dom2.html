@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="input">
+        이름:<input type="text" id="name" value="홍길동"><br>
+        나이:<input type="number" id="age" value="22"><br>
+        점수:<input type="number" id="score" value="88"><br>
+        <button id="btn">추가</button>
+    </div>
+
+    <div id="show">
+        <ul>
+            <!-- <li>이름,나이,점수</li> -->
+        </ul>
+    </div>
+
+    <script>
+        // id값으로 해당 태그에 이벤트 추가
+        let btn = document.getElementById('btn');
+        btn.onclick = function () {
+            //사용자가 입력한값을 읽어옴.
+            let name = document.getElementById('name').value;
+            let age = document.getElementById('age').value;
+            let score = document.getElementById('score').value;
+
+            // li 태그생성
+            let liTag = document.createElement('li');
+            let text = document.createTextNode(name + ', ' + age + ', ' + score + ' ');//innerHTML로도 
+                                                                                    //텍스트 넣을수 있다.
+            liTag.appendChild(text);
+
+            let btnTag = document.createElement('button'); // <button></button>
+            btnTag.onclick = function () {
+                console.log(this); //this 는 <button>삭제</button> 로 확인
+                this.parentNode.remove(); // button태그(this)의 부모태그<li> 삭제 
+            }// 태그안에 onclick 속성 달기
+            text = document.createTextNode('삭제');
+            btnTag.appendChild(text);
+            liTag.appendChild(btnTag);
+
+
+            // ul 하위 생성.
+            let ulTag = document.querySelector('#show>ul');
+            ulTag.appendChild(liTag);
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            text-align: right;
+        }
+
+        td {
+            width: 30px;
+        }
+
+        th#month {
+            text-align: center;
+            color: black;
+            background-color: white;
+        }
+        tr>th {
+            background-color: grey;
+            color: white;
+        }
+
+        tbody>tr>td:nth-child(7n+1) {
+            background-color: rgb(243, 144, 144);
+            
+        }
+
+        tbody>tr>td:nth-child(7n) {
+            background-color: rgb(126, 126, 250);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <script>
+     /*    showCalendar(2021, 8);
+
+        function showCalendar(year, month) {}
+ */
+
+        const titles = ['Sun', 'Mon', 'Tue', 'Wen', 'Thu', 'Fri', 'Sat']
+
+        let today = new Date(2021, 9, 1); // 2021, 10, 4, 1
+        let lastDate = new Date(2021, 10, 0);
+        let dayOfMonth = today.getDay();
+      /*   document.write(today.getFullYear() + '<br>');
+        document.write(today.getMonth()+1 + '<br>');
+        document.write(today.getDate() + '<br>');
+        document.write(today.getDay() + '<br>');  // 0~6
+
+        document.write('이번달의 마지막날: ' + lastDate.getDate() + '<br>'); */
+
+        console.log(titles.length)
+        document.write('<table border="1">');
+        document.write('<tr><th colspan="7" id="month">10월</th></tr>')
+        document.write('<tr>');
+        for ( let i = 0; i < titles.length; i++){
+            document.write('<th>' + titles[i] + '</th>');
+        }
+        document.write('</tr><tr>');
+                /* for(let j = 0; j < lastDate.getDay() ; j++){ */
+                //빈공란 부분
+                console.log(dayOfMonth);
+                for(let i = 0; i < dayOfMonth ; i++){
+                        document.write('<td></td>');
+                    }
+                //일정보 부분
+                for( let i = 1; i<= lastDate.getDate() ; i++) {
+                    document.write('<td>' + i + '</td>' );
+                    if ( (i + dayOfMonth) % 7 == 0) {
+                        document.write('<tr></tr>');
+                    }
+                }
+                //공백(5칸)+ lastDate + i % 7 == 0 
+                for(let i =1; i < 7 ; i++){
+                    document.write('<td></td>');
+                    if ( dayOfMonth + lastDate.getDate() + i % 7 == 0){
+                        break;
+                    }
+                }
+
+            document.write('</tr>');
+        document.write('</table>');
+    </script>
+</body>
+</html>

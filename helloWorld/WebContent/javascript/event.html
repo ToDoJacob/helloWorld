@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="clickFunc()">Click</button>  <!-- buttons[0]-->
+    <p id="1">here</p>
+    <button onclick="clickFunc2()">Click2</button> <!-- buttons[1] -->
+    <!-- <h>안녕하세요.</h1> -->
+    <script>
+        //태그 -> element
+        function clickFunc() {
+           // window.alert('클릭되었습니다');
+            let h1 = document.createElement('h1');
+            h1.innerHTML = '안녕하세요.';
+            let buttons = document.getElementsByTagName('button');
+            buttons[0].before(h1);
+
+            buttons[0].innerHTML = '클릭';
+            buttons[1].style.backgroundColor = 'yellow';
+        }
+        /* function clickFunc2() {
+            let pTag = document.getElementsByTagName('p');
+            pTag[0].innerHTML = '여기';
+        } */
+        function clickFunc2() {
+            let pTag = document.getElementById('1');
+            pTag.innerHTML = '여기';
+        }
+
+
+    </script>
+</body>
+</html>

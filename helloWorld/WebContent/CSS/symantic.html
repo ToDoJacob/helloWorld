@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS/symantic.html</title>
+    <style>
+        * {box-sizing: border-box;}
+        header.outer { 
+            background-color: rgb(253, 232, 163);
+            text-align: center;
+            border: 2px solid gray;
+            border-radius: 3px;
+            width: 99.4%;
+            margin: 0.3%;
+            height: 60px;
+            padding-top: 12px; }
+        nav,section,aside {
+            background-color: rgb(181, 255, 85);}
+        nav {
+            float: left;
+            width: 25%;
+            height: 300px;
+            border: 2px solid gray;
+            border-radius: 3px;
+            margin: 0.3%;
+            text-align: center;
+            padding-top: 10px; }
+        section {
+            float: left;
+            width: 48.2%;
+            height: 300px;
+            margin: 0.3%;
+            border: 2px solid grey;
+            border-radius: 3px;
+            text-align: center;
+            padding-top: 5px; }
+        section>
+        header,article,footer {
+            background-color: rgba(246, 248, 151, 0.685); }
+        section>header{
+            height: 50px;
+            padding-top: 10px;
+            padding-bottom: 5px; }
+        section>article{
+            padding-top: 60px;
+            padding-bottom: 60px; }
+        section>footer{
+            height: 50px;
+            padding-top: 10px;
+            padding-bottom: 5px; }
+        aside {
+            float: left;
+            width: 25%;
+            height: 300px;
+            margin: 0.3%;
+            border: 2px solid grey;
+            border-radius: 3px;
+            text-align: center;
+            padding-top: 10px; }
+        footer.outer {
+            background-color: rgb(250, 216, 121);
+            float: left;
+            width: 99.4%;
+            height: 60px;
+            margin: 0.3%;
+            border: 2px solid grey;
+            border-radius: 3px;
+            text-align: center;
+            padding-top: 12px;
+            padding-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <header class="outer" style="font-size: 20px;">
+        &lt;header&gt;
+    </header class="inner">
+    <nav style="width: 25%; font-size: 20px;">
+        &lt;nav&gt;
+    </nav>
+    <section style="font-size: 20px;">&lt;section&gt;
+        <header style="border: 2px solid grey; margin: 3px; border-radius: 3px;">
+            &lt;header&gt;
+        </header>
+        <article style="border: 2px solid grey; margin: 3px; border-radius: 3px;">
+            &lt;article&gt;
+        </article>
+        <footer class="inner" style="border: 2px solid grey; margin: 3px; border-radius: 3px;">
+            &lt;footer&gt;
+        </footer>
+    </section>
+    <aside style="width: 25%; font-size: 20px;">
+        &lt;aside&gt;
+    </aside>
+    <footer class="outer" style="font-size: 20px;">
+        &lt;footer&gt;
+    </footer>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        div#show {
+            width: 60%;
+            float: left;
+        }
+
+        div#aside {
+            width: 28%;
+            float: right;
+            margin: 100px;
+            border: 2px dotted firebrick;
+            padding: 5px;
+        }
+
+        #aside label {
+            display: inline-block;
+            width: 100px;
+        }
+        div.btn {
+            display: inline;
+            float: left;
+            margin: 10px;
+        }
+      
+    </style>
+</head>
+
+<body>
+    <div id="show">
+        <!--  <table border="1">
+
+        </table> -->
+    </div>
+
+    <div id="aside">
+        <div class="id"><label for="empId">ID</label><input type="text" id="empId"></div>
+        <div class="fname"><label for="empId">FName</label><input type="text" id="firstName"></div>
+        <div class="lname"><label for="empId">LName</label><input type="text" id="lastName"></div>
+        <div class="email"><label for="empId">Email</label><input type="text" id="email"></div>
+        <div class="gender"><label for="empId">Gender</label><input type="text" id="gender"></div>
+        <div class="address"><label for="empId">IP</label><input type="text" id="address"></div>
+        <div class="btn"><button id="btn">변경</button></div>
+        <div class="btn"><button id="delete">삭제</button></div>
+    </div>
+    
+    <script>
+        //삭제버튼눌러서 Tr삭제하는기능
+        document.getElementById('delete').onclick = function () {
+            let empId = document.getElementById('empId').value;
+            let findTr = document.getElementById(empId);
+            findTr.remove();
+        }
+        //변경버튼눌러서 td값 변경하는 기능
+        document.getElementById('btn').onclick = function () {
+            let empId = document.getElementById('empId').value;
+            let fname = document.getElementById('firstName').value;
+            console.log(empId);
+
+            let findTr = document.getElementById(empId);
+            console.log(findTr)
+
+            findTr.childNodes[1].firstChild.nodeValue = fname;
+        }
+
+        let rawData = `[{"id":1,"first_name":"Goldie","last_name":"Belfelt","email":"gbelfelt0@yellowbook.com","gender":"Female","ip_address":"137.111.82.178"},
+            {"id":2,"first_name":"Gordy","last_name":"Kimbrough","email":"gkimbrough1@addtoany.com","gender":"Female","ip_address":"112.225.214.85"},
+            {"id":3,"first_name":"Babb","last_name":"Kohen","email":"bkohen2@yellowbook.com","gender":"Female","ip_address":"108.163.241.58"},
+            {"id":4,"first_name":"Darn","last_name":"Guinnane","email":"dguinnane3@booking.com","gender":"Non-binary","ip_address":"184.107.148.155"},
+            {"id":5,"first_name":"Andriana","last_name":"Skehens","email":"askehens4@cdbaby.com","gender":"Male","ip_address":"223.219.56.21"},
+            {"id":15,"first_name":"Chere","last_name":"Battie","email":"cbattiee@phoca.cz","gender":"Bigender","ip_address":"85.23.189.35"}]
+            `;
+        let data = JSON.parse(rawData);
+
+        let table, tbody, tr, th, td, text;
+        table = document.createElement('table');
+        table.setAttribute('border', '1');
+        tbody = document.createElement('tbody');
+        table.appendChild(tbody);
+
+        //title부분
+        tr = document.createElement('tr');
+        tbody.appendChild(tr);
+        for (let field in data[0]) {
+            let th = document.createElement('th');
+            text = document.createTextNode(field.replace('_', ' ').toUpperCase());
+            th.appendChild(text);
+            tr.appendChild(th);
+        }
+
+        //data부분
+        for (let row of data) {
+            tr = document.createElement('tr');
+            tr.setAttribute('id', row.id);
+        
+            /* tr.id = 'row'; */
+            //커서올리면 해당 tr한줄 배경색 바뀌는 기능
+
+            tr.onmouseover = function () {
+                this.style.backgroundColor="rgb(255, 156, 156)";
+            }
+            
+            tr.onmouseout = function () {
+                this.style.backgroundColor="white";
+            }
+            
+            tr.onclick = function () {
+                let empId = this.childNodes[0].firstChild.nodeValue;
+                let fname = this.childNodes[1].firstChild.nodeValue;
+                let lname = this.childNodes[2].firstChild.nodeValue;
+                let email = this.childNodes[3].firstChild.nodeValue;
+                let gender = this.childNodes[4].firstChild.nodeValue;
+                let address = this.childNodes[5].firstChild.nodeValue;
+
+                document.getElementById('empId').value = empId;
+                document.getElementById('firstName').value = fname;
+                document.getElementById('lastName').value = lname;
+                document.getElementById('email').value = email;
+                document.getElementById('gender').value = gender;
+                document.getElementById('address').value = address;
+            }
+            tbody.appendChild(tr);
+            for (let field in row) {
+                td = document.createElement('td');
+                text = document.createTextNode(row[field]);
+                td.appendChild(text);
+                tr.appendChild(td);
+            }
+        }
+        let show = document.getElementById('show');
+        show.appendChild(table);
+    </script>
+</body>
+
+</html>

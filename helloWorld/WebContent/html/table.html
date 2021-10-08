@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html/table.html</title>
+</head>
+
+<body>
+    <table border="1">
+        <thead>
+            <tr style="background-color: grey;">
+                <th>이름</th>
+                <th>점수</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>홍민성</td>
+                <td>90</td>
+            </tr>
+            <tr>
+                <td>최민수</td>
+                <td>80</td>
+            </tr>
+            <tr>
+                <td>심은경</td>
+                <td>70</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <td rowspan="2">이름</td>
+                <td>국어</td>
+            </tr>
+            <tr>
+                <td>국어</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td rowspan="2">홍길동</td>
+                <td>90</td>
+            </tr>
+            <tr>
+                <td>80</td>
+            </tr>
+            <td rowspan="2">김민수</td>
+            <td>70</td>
+            </tr>
+            <tr>
+                <td>90</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th colspan="3">이름</th>
+            </tr>
+            <tr>
+                <td>국어</td>
+                <td>영어</td>
+                <td>수학</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="3" style="text-align: center;">홍길동</td>
+            </tr>
+            <tr style="text-align: right;">
+                <td>88</td>
+                <td><img width="30px" src="../img/코딩이미지.png" alt="코딩사진입니다."></td>
+                <td><a href="#">89</a></td>
+            </tr>
+            <tr>
+                <td colspan="3" style="text-align: center;">김민수</td>
+            </tr>
+            <tr>
+                <td>88</td>
+                <td>89</td>
+                <td>89</td>
+            </tr>
+        </tbody>
+    </table>
+    
+   <table border="1">
+       <thead>
+           <tr>
+               <th colspan="5">이력서</th>
+           </tr>
+           <tr>
+               <td rowspan="2">사진</td>
+               <td>이름</td>
+               <td>손흥민</td>
+               <td>나이</td>
+               <td style="text-align: right;">28</td>
+           </tr>
+       </thead>
+   </table>
+
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS/pseudo1.html</title>
+    <style>
+        /*h4:nth-child(2n){
+            background-color: green;
+        }*/
+        h4:nth-of-type(2n){
+            background-color: red;
+        }
+        h4:last-child{
+            background-color: green;
+        }
+        p:only-child{
+            background-color: skyblue;
+        }
+        p:only-of-type{
+            background-color: rgb(29, 255, 48);
+        }
+        p:empty{
+            color: blue;
+            border: 1px dotted red;
+        }
+        input:checked+p{
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>웹프로그래밍</h3>
+    <h4>웹프로그래밍</h4>
+    <h4>웹프로그래밍</h4>
+    <h4>웹프로그래밍</h4>
+    <h4>웹프로그래밍</h4>
+    <h4>웹프로그래밍</h4>
+    <h4>웹프로그래밍</h4>
+    <h4>웹프로그래밍</h4>
+    <h4>웹프로그래밍</h4>
+    <h4>웹프로그래밍</h4>
+    <h4>웹프로그래밍</h4>
+    <div>
+        <p>웹프로그래밍1</p>
+    </div>
+    <p>웹프로그래밍2</p>
+    <p></p>
+    <p>웹프로그래밍3</p>
+    
+    <input type="checkbox" name="" id="">
+    <p>체크박스</p>
+
+    <div class="parent">
+        <div class="child">
+            <div class="grandChildren"></div>
+        </div>
+    </div>
+</body>
+</html>
